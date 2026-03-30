@@ -9,7 +9,7 @@ import "dotenv/config";
 import session from "express-session";
 import AssignmentRoutes from "./kambaz/assignments/routes.js";
 import EnrollmentRoutes from "./kambaz/enrollments/routes.js";
-import ModuleRoutes from "./(kambaz)/modules/routes.js";
+import ModuleRoutes from "./kambaz/modules/routes.js";
 
 const app = express();
 app.use(
