@@ -10,13 +10,18 @@ import session from "express-session";
 import AssignmentRoutes from "./kambaz/assignments/routes.js";
 import EnrollmentRoutes from "./kambaz/enrollments/routes.js";
 import ModuleRoutes from "./kambaz/modules/routes.js";
+import mongoose from "mongoose";
 
+const CONNECTION_STRING =
+  process.env.DATABASE_CONNECTION_STRING || "mongodb://127.0.0.1:27017/kambaz";
+
+mongoose.connect(CONNECTION_STRING);
 const app = express();
 app.use(
- cors({
-   credentials: true,
-   origin: process.env.CLIENT_URL || "http://localhost:3000",
- })
+  cors({
+    credentials: true,
+    origin: process.env.CLIENT_URL || "http://localhost:3000",
+  }),
 );
 
 const sessionOptions = {
@@ -34,8 +39,6 @@ if (process.env.SERVER_ENV !== "development") {
   };
 }
 app.use(session(sessionOptions));
-
-
 
 app.use(express.json());
 UserRoutes(app, db);
