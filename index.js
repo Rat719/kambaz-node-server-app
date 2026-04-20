@@ -10,6 +10,7 @@ import session from "express-session";
 import AssignmentRoutes from "./kambaz/assignments/routes.js";
 import EnrollmentRoutes from "./kambaz/enrollments/routes.js";
 import ModuleRoutes from "./kambaz/modules/routes.js";
+import QuizzesRoutes from "./kambaz/quizzes/routes.js";
 import mongoose from "mongoose";
 
 const CONNECTION_STRING =
@@ -42,6 +43,7 @@ app.use(session(sessionOptions));
 
 app.use(express.json());
 UserRoutes(app);
+QuizzesRoutes(app);
 CourseRoutes(app);
 AssignmentRoutes(app);
 EnrollmentRoutes(app);
